@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24点豪华版</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>24点豪华版</h1>
+        <div class="game-area">
+            <div class="cards-container">
+                <div class="card" id="card1"></div>
+                <div class="card" id="card2"></div>
+                <div class="card" id="card3"></div>
+                <div class="card" id="card4"></div>
+            </div>
+            <div class="controls">
+                <div class="button-group">
+                    <button id="deal-btn" class="btn primary-btn">发牌</button>
+                    <button id="custom-btn" class="btn primary-btn">自定义题目</button>
+                    <button id="challenge-btn" class="btn primary-btn">闯关模式</button>
+                </div>
+                <div id="custom-input" class="custom-input hidden">
+                    <div class="number-inputs">
+                        <input type="number" id="num1" min="1" max="13" placeholder="数字1">
+                        <input type="number" id="num2" min="1" max="13" placeholder="数字2">
+                        <input type="number" id="num3" min="1" max="13" placeholder="数字3">
+                        <input type="number" id="num4" min="1" max="13" placeholder="数字4">
+                    </div>
+                    <button id="submit-custom" class="btn secondary-btn">确定</button>
+                </div>
+                <div id="challenge-info" class="challenge-info hidden">
+                    <div class="challenge-header">
+                        <span id="challenge-level">第 1 关</span>
+                        <div class="challenge-buttons">
+                            <button id="prev-challenge" class="btn mini-btn">上一关</button>
+                            <button id="next-challenge" class="btn mini-btn">下一关</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="answer-input" placeholder="输入你的答案 (如: 3+8*3)">
+                    <button id="submit-btn" class="btn secondary-btn">提交</button>
+                </div>
+                <button id="show-answer-btn" class="btn tertiary-btn">查看答案</button>
+            </div>
+            <div id="result-message" class="message"></div>
+            <div id="solutions-container" class="solutions-container">
+                <h3>可能的解法：</h3>
+                <div id="solutions-list" class="solutions-list"></div>
+            </div>
+        </div>
+        <div class="instructions">
+            <h2>游戏规则</h2>
+            <p>使用四个数字和 +, -, *, / 运算符计算出24。</p>
+            <p>每个数字必须且只能使用一次。</p>
+            <p>可以使用括号来改变计算顺序。</p>
+            <p>在闯关模式中，输入<code>4nums.com</code>可查看当前关卡的答案。</p>
+        </div>
+    </div>
+    
+    <!-- 使用Vite打包后的脚本 -->
+    <script type="module" src="./indexApp.js"></script>
+    
+    <!-- 回退脚本，Vite会处理这部分 -->
+    <script>
+        window.addEventListener('error', function(event) {
+            // 检测是否为游戏脚本加载错误
+            if (event.filename && event.filename.includes('game.js')) {
+                console.warn('现代模块加载失败，回退到模拟数据版本');
+                // 动态加载模拟数据脚本
+                const fallbackScript = document.createElement('script');
+                fallbackScript.src = 'mock.js';
+                document.body.appendChild(fallbackScript);
+            }
+        }, true); // 捕获阶段
+    </script>
+</body>
+</html> 

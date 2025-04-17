@@ -1,0 +1,32 @@
+{
+  "name": "4nums-pro",
+  "version": "1.0.0",
+  "description": "24点豪华版 - 高级24点游戏实现",
+  "main": "indexApp.js",
+  "type": "module",
+  "bin": {
+    "4nums-pro": "./cli.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cli": "node cli.js"
+  },
+  "keywords": [
+    "24点",
+    "游戏",
+    "算法",
+    "4nums",
+    "豪华版"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "terser": "^5.39.0",
+    "vite": "^5.0.0",
+    "vite-plugin-singlefile": "^2.2.0"
+  }
+}

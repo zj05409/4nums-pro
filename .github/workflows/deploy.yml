@@ -1,0 +1,52 @@
+name: 部署4nums-pro到GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  # 允许手动触发工作流
+  workflow_dispatch:
+
+# 设置GITHUB_TOKEN权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 只允许一次部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: 设置Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - name: 安装依赖
+        run: npm ci
+      - name: 构建
+        run: npm run build
+      - name: 设置Pages
+        uses: actions/configure-pages@v3
+      - name: 上传构建结果
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './dist'
+
+  # 部署到GitHub Pages
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 部署到GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1 
