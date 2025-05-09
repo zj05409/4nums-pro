@@ -14,13 +14,13 @@
 
 ## 演示
 
-访问 [https://yourusername.github.io/4nums-pro](https://yourusername.github.io/4nums-pro) 体验游戏
+访问 [https://zj05409.github.io/4nums-pro](https://zj05409.github.io/4nums-pro) 体验游戏
 
 ## 安装
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/4nums-pro.git
+git clone https://github.com/zj05409/4nums-pro.git
 
 # 进入项目目录
 cd 4nums-pro
