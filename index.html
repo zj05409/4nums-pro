@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>24点豪华版</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -65,18 +67,5 @@
     <!-- 使用Vite打包后的脚本 -->
     <script type="module" src="./indexApp.js"></script>
     
-    <!-- 回退脚本，Vite会处理这部分 -->
-    <script>
-        window.addEventListener('error', function(event) {
-            // 检测是否为游戏脚本加载错误
-            if (event.filename && event.filename.includes('game.js')) {
-                console.warn('现代模块加载失败，回退到模拟数据版本');
-                // 动态加载模拟数据脚本
-                const fallbackScript = document.createElement('script');
-                fallbackScript.src = 'mock.js';
-                document.body.appendChild(fallbackScript);
-            }
-        }, true); // 捕获阶段
-    </script>
 </body>
 </html> 
