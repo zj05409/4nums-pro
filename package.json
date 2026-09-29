@@ -8,7 +8,7 @@
     "4nums-pro": "./cli.js"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

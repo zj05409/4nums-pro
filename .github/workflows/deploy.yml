@@ -2,7 +2,7 @@ name: 部署4nums-pro到GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master", "main" ]
   # 允许手动触发工作流
   workflow_dispatch:
 
@@ -22,20 +22,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 设置Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .nvmrc
           cache: 'npm'
       - name: 安装依赖
         run: npm ci
+      - name: 测试
+        run: npm test
       - name: 构建
         run: npm run build
       - name: 设置Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
       - name: 上传构建结果
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
@@ -49,4 +51,4 @@ jobs:
     steps:
       - name: 部署到GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1 
+        uses: actions/deploy-pages@v4 

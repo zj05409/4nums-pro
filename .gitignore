@@ -41,6 +41,8 @@ Thumbs.db
 coverage/
 .nyc_output/
 
+.watchman-cookie-*
+
 # 临时文件
 tmp/
 temp/ 
